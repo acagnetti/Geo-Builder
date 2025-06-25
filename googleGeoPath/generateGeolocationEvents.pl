@@ -34,18 +34,6 @@ use Math::Trig 'pi', 'rad2deg';
 
 die "\n\nGENERATEGEOLOCATIONEVENTS Error, execute  command line parameters:\n\nperl generateGeoLocationEvents.pl [AIRCRAFT [TAXIING|RUNWAY] <Flight Number>|PEOPLE|VEHICLE <Vehicle Number>|GEOFENCEONLY] <geofenceLabel(s)> <googleMapsExportFile(s)> <SolaceBrokerURL:Port> <SolaceBrokerUserName> <SolaceBrokerPassword> \n\n" if scalar (@ARGV) < 2;
 
-#  london lab appliance user 
-
-#my $mqtt_username = "adr-demo-internal-user";
-# london lab appliance password 
-#my $mqtt_password = "1rJYu8C0T.";
-# london lab appliance broker  
-#my $url = 'emea7.londonlab:3001';
-
-#my $mqtt_username = "solace-cloud-client";
-#my $mqtt_password = "ltg0ugtodbfe6pina9p7a2qb0b";
-#my $url = 'mr-connection-sc3xt4qdp5v.messaging.solace.cloud:1883';
-
 my $mqtt_username = "";
 my $mqtt_password = "";
 my $url = '';
@@ -92,7 +80,7 @@ elsif ($geolocationType eq 'GEOFENCEONLY'){
 $ENV{MQTT_SIMPLE_ALLOW_INSECURE_LOGIN} = 1;
 
 
-my $destinationTopicPrefix = "adr/situation/track/v1";
+my $destinationTopicPrefix = "geo/situation/track/v1";
 my $people = {};
 my $dateTimeString = "";
 
