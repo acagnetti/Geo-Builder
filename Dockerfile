@@ -1,4 +1,5 @@
 # [BUILD] sudo docker build -f Dockerfile -t solace-geo-events-manager .
+# [GENERATE FENCES] sudo docker run --rm --name geoBuilder -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEONLY SECURITY ./geofiles/walkpath10.csv TAXIING ./geofiles/planetaxipath.csv RUNWAY ./geofiles/planetakeoffpath.csv SHOP ./geofiles/shops.csv 
 # [EXECUTE] sudo docker run --rm -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles --name geoBuilder solace-geo-events-manager tcps://mr-connection-q7gz8myai4c.messaging.solace.cloud:55443 aviationdemorecording mr-connection-q7gz8myai4c.messaging.solace.cloud:1883 solace-cloud-client 8ra01ejmioj0stse6hjlrqf8gb 100 walkpath10.csv 26 planetaxipath.csv 5 planetakeoffpath.csv 15 vehiclePath.csv
 # [CLI] sudo docker exec -it geoBuilder /bin/bash
 # [STOP] sudo docker stop geoBuilder
