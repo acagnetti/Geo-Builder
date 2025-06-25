@@ -25,13 +25,14 @@
       padding: 0px;
     }
   </style>
-   <!-- Alessandro's MAPS key for this demo-->
+   <!-- MAPS key for this demo-->
   <script src="https://maps.googleapis.com/maps/api/js?key=<YOUR_GOOGLE_MAPS_KEY>s&v=beta&libraries=visualization"></script>
   <script type="text/javascript" src="solclient-full.js"></script>
   <script type="text/javascript" src="mqtt.min.js"></script>
   <!--script type="text/javascript" src="marker_with_label.js"></script-->
   <!-- <script type="text/javascript" src="qrcode.min.js"></script> -->
   <script src="alertify.js-0.3.11/lib/alertify.min.js"></script>
+  <script type="text/javascript" src="js/auth.js"></script>
   <style>
     #wrapper {
       position: relative;
@@ -1156,10 +1157,7 @@
         mySessionProperties.readTimeoutInMsecs = OPERATION_TIMEOUT;
         mySessionProperties.keepAliveIntervalsLimit = 10;
 						
-		mySessionProperties.userName = "<YOUR_SOLACE_USER>"; // Solace user
-		mySessionProperties.password = "<YOUR_SOLACE_PASSWORD>";  // Solace password
-		mySessionProperties.vpnName = "<YOUR_SOLACE_VPN>"; // Solace vpn
-		mySessionProperties.url = "<YOUR_SOLACE_URL>";  // solace URL 
+		autenticateToBroker(mySessionProperties);
 
         mySessionProperties.includeSenderId = true;
         //            myNickName = mySessionProperties.clientName = ns.utils_getNickName();
