@@ -83,7 +83,11 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
     	`mySessionProperties.vpnName = "myvpn"; // Solace VPN` <BR>
     	`mySessionProperties.url = "wss://mr-connection-xxxxxxxxxx.messaging.solace.cloud:443";  // Solace URL` <BR>
 
-  - Open your browser and open your geo Events page hosted in your web browser
+  - Open your browser and open your geo Events page hosted in your web browser.
+    Topics used for this framework:
+    - `geo/situation/track/v1/{trackType}/{trackNum}/{lat}/{lon}` this is used to publish geo location events with coordinate (eg. *geo/situation/track/v1/VEHICLE/100/41.7955198/12.2495002*)<BR>
+    - `geo/situation/fence/v1/request` this is a new/delete fence request sent from js client to add or remove fences to fence detection<BR>
+    - `geo/situation/fence/v1/alert/{tracktype}/{tracknumber}/{geofenceName}/latitude/longitude` this is an alert message from the the fence detection process that something has entered that fence<BR>
     ![image](https://github.com/user-attachments/assets/9c75f615-0d19-486d-8cc9-662c09dfe2b0) <BR>
 
 - when done, remember to stop the docker container: `sudo docker stop geoBuilder`<BR>
