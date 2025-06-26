@@ -30,9 +30,8 @@ use Geo::Calc::XS;
 use Time::HiRes qw(usleep nanosleep);
 use Math::Trig 'pi', 'rad2deg';
 
-#print "ONE COMMAND LINE:".$ARGV[0]." ".$ARGV[1]." ".$ARGV[2]." ".$ARGV[3]." ".$ARGV[4]." ".$ARGV[5]." ".$ARGV[6]." ".$ARGV[7]." ".$ARGV[8]." ".$ARGV[9]." ".$ARGV[10]." ".$ARGV[11]." ".$ARGV[12]."\n\n";
 
-die "\n\nGENERATEGEOLOCATIONEVENTS Error, execute  command line parameters:\n\nperl generateGeoLocationEvents.pl [AIRCRAFT [TAXIING|RUNWAY] <Flight Number>|PEOPLE|VEHICLE <Vehicle Number>|GEOFENCEONLY] <geofenceLabel(s)> <googleMapsExportFile(s)> <SolaceBrokerURL:Port> <SolaceBrokerUserName> <SolaceBrokerPassword> \n\n" if scalar (@ARGV) < 2;
+die "\n\nGENERATEGEOLOCATIONEVENTS Error, execute  command line parameters:\n\nperl generateGeoLocationEvents.pl [AIRCRAFT [TAXIING|RUNWAY] <Flight Number>|PEOPLE|VEHICLE <Vehicle Number>|GEOFENCEONLY|GEOFENCEBUTTONSONLY] <geofenceLabel(s)> <googleMapsExportFile(s)> <SolaceBrokerURL:Port> <SolaceBrokerUserName> <SolaceBrokerPassword> \n\n" if scalar (@ARGV) < 2;
 
 my $mqtt_username = "";
 my $mqtt_password = "";
@@ -41,8 +40,8 @@ my $url = '';
 # read first command line and print it
 my $geolocationType = $ARGV[0];
 my $numParameters = $#ARGV;
-print "\/\/$numParameters arguments passed to script \n";
-print "\/\/Geolocation Type selected: $geolocationType\n";
+print "<!--$numParameters arguments passed to script-->\n";
+print "<!--Geolocation Type selected: $geolocationType-->\n";
 
 if ($geolocationType eq 'AIRCRAFT'){
 	$aircraftMovementType = $ARGV[1];
@@ -67,12 +66,40 @@ elsif ($geolocationType eq 'PEOPLE'){
     $mqtt_password = $ARGV[4];
     $url = $ARGV[2];
 }
-elsif ($geolocationType eq 'GEOFENCEONLY'){
+elsif (($geolocationType eq 'GEOFENCEONLY') or  ($geolocationType eq 'GEOFENCEBUTTONSONLY')){
 	# read all the input files names (first one is only javascript output file name)
 	for ($zz=1;$zz<=($numParameters/2);$zz++) {
 		$googleMapsExportFiles[$zz] = $ARGV[$zz*2];
 		$geofenceTags[$zz] = $ARGV[($zz-1)*2+1];
 	}
+}
+
+# if only required tȯ generate pannel with geofence buttons in HTML
+if ($geolocationType eq 'GEOFENCEBUTTONSONLY') {
+	$countButtonRows = 0;
+	print "\t\t<table>\n";
+	foreach ( @geofenceTags ){
+		# skip first empty tag
+		$countButtonRows++;
+		next if ($countButtonRows == 1);
+		$tag = $_;
+        print "\t\t\t<tr>\n";
+        print "\t\t\t\t<td align=\"left\">\n";
+		print "\t\t\t\t\t<button id=\"addPolyButton\" onclick=\"notificationEnabled = 1; addNewPoly(\'$tag\'); updateSearch();\">Add <span style=\"color:#f71; font-weight: 900;\">$tag Fence<\/span><\/button>\n";
+		print "\t\t\t\t\</td>\n";
+		
+		# in first row put remove fence button
+		if ($countButtonRows == 2){
+			print "\t\t\t\t<td align=\"right\">\n";
+			print "\t\t\t\t\t<button id=\"removeAllShapesButton\" onclick=\"notificationEnabled = 0;  clearAllShapes();\">Remove<span style=\"color:#f71; font-weight: 900;\"> Fences<\/span><\/button>\n";
+			print "\t\t\t\t<\/td>\n";
+		}
+		
+		print "\t\t\t<\/tr>\n";
+	}
+	print "\t\t<\/table>\n";
+
+	die "\n\n<!-- GEOFENCE PANEL HTML CODE GENERATION DONE! -->\n\n";
 }
 
 

@@ -6,6 +6,9 @@
 if [[ "$1" == "GEOFENCEONLY" ]]
 then # only generate geofence code
 		perl generateGeolocationEvents.pl GEOFENCEONLY $2 $3 $4 $5 $6 $7 $8 $9 ${10} ${11} ${12} ${13} ${14} ${15} ${16} ${17} ${18} ${19} ${20}
+elif [[ "$1" == "GEOFENCEBUTTONSONLY" ]]
+then # only generate geofence button panel code
+		perl generateGeolocationEvents.pl GEOFENCEBUTTONSONLY $2 $3 $4 $5 $6 $7 $8 $9 ${10} ${11} ${12} ${13} ${14} ${15} ${16} ${17} ${18} ${19} ${20}
 else # run the full geo events generator with fence detection process
 		nohup java -cp ./target/CAGFence-0.0.1-SNAPSHOT-jar-with-dependencies.jar CAGFence $1 $4@$2 $5 &
 		#endless loop to generate geo events for all objects
