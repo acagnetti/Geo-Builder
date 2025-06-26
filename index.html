@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>ADR Fiumicinio Situational Awareness Demo</title>
+  <title>Situational Awareness Demo</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
@@ -2184,6 +2184,11 @@ try {
 
     google.maps.event.addDomListener(window, 'load', onLogin);
   </script>
+    <script> 
+    $(function(){
+      $("#includedContent").load("menu.html"); 
+    });
+    </script>  
 </head>
 
 <body>
@@ -2195,33 +2200,8 @@ try {
     <table>
       <tr>
         <td>
-          <table>
-            <tr>
-              <td align="left">
-                <button id="addPolyButton" onclick="notificationEnabled = 1; addNewPoly('SECURITY'); updateSearch();">Add <span style="color:#f71; font-weight: 900;">Security Fence</span></button>
-              </td>
-			  <td align="right">
-                <button id="removeAllShapesButton"
-                  onclick="notificationEnabled = 0;  clearAllShapes();">Remove
-                  <span style="color:#f71; font-weight: 900;"> Fences</span></button>
-              </td>
-            </tr>
-			<tr>
-              <td align="left">
-                <button id="addPolyButton" onclick="notificationEnabled = 1;  addNewPoly('RUNWAY'); updateSearch();">Add <span style="color:#f71; font-weight: 900;">Runway Fence</span></button>
-              </td>
-            </tr>
-			<tr>
-              <td align="left">
-                <button id="addPolyButton" onclick="notificationEnabled = 1; addNewPoly('TAXIING'); updateSearch();">Add <span style="color:#f71; font-weight: 900;">Taxiing Fence</span></button>
-              </td>
-            </tr>			
-			<tr>
-              <td align="left">
-                <button id="addPolyButton" onclick="notificationEnabled = 1; addNewPoly('SHOP'); updateSearch();">Add <span style="color:#f71; font-weight: 900;">Shops Fence</span></button>
-              </td>
-            </tr>			
-          </table>
+		  <!--this is the buttons for fence activation / deactivation in an external file-->
+		  <div id="includedContent"></div>  
         </td>
       </tr>
       <tr>
@@ -2253,7 +2233,7 @@ try {
       <tr>
         <td valign="top">
           <img src="solace-logo-2.png" width="90" height="25"/>
-          <h1>ADR Fiumicinio Situational Awareness Demo</h1>
+          <h1>Situational Awareness Demo</h1>
           <p />
           <!--h3>Bidirectional IoT Communication using MQTT<br><a href="http://worldcomp-proceedings.com/proc/p2016/ICM3967.pdf" taret="_blank"><h3>Advanced Filtering and Routing Capabilities</h3></a></h3-->
           <h5>Real-time situational awareness powered by Event Driven Architecture</h5>
