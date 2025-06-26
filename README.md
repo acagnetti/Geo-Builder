@@ -61,7 +61,7 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
 
     *EXAMPLE* <BR>
 
- `sudo docker run --rm --name geoBuilder -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEBUTTONSONLY SECURITY ./geofiles/walkpath10.csv TAXIING ./geofiles/planetaxipath.csv RUNWAY ./geofiles/planetakeoffpath.csv SHOP ./geofiles/shops.csv > menu.html`
+     `sudo docker run --rm --name geoBuilder -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEBUTTONSONLY SECURITY ./geofiles/walkpath10.csv TAXIING ./geofiles/planetaxipath.csv RUNWAY ./geofiles/planetakeoffpath.csv SHOP ./geofiles/shops.csv > menu.html`
     
   - run the docker container (use the google maps file export path set above and the file names given when exporting the map levels, make sure you change the values between <>):
     
