@@ -47,15 +47,14 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
         - go to main directory on local filesystem: `cd Geo-Builder` <BR>
     	- build docker image: `sudo docker build -f Dockerfile -t solace-geo-events-manager .`<BR>
 
-  - generate HTML/Javascript code to visualize/activate level zones in the Google Map and save them in the `js/genPolygons.js` file:
+  - generate HTML/Javascript code to visualize/activate level zones in the Google Map and save them in the `js/genPolygons.js` file: <BR>
     `sudo docker run --rm --name geoBuilder -v <googleMapsExportFilePath>:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEONLY <GEOFENCETAG1> ./geofiles/<GeoFenceExportFile1> <GEOFENCETAG2> ./geofiles/<GeoFenceExportFile2> ... > js/genPolygons.js` <BR>
 
     *EXAMPLE* <BR>
 
      `sudo docker run --rm --name geoBuilder -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEONLY SECURITY ./geofiles/walkpath10.csv TAXIING ./geofiles/planetaxipath.csv RUNWAY ./geofiles/planetakeoffpath.csv SHOP ./geofiles/shops.csv > js/genPolygons.js`
 
-
-		- generate HTML/Javascript code to visualize the panel with buttons to activate the fence detection in the Google Map and save them in the `menu.html` file (same directory of index.html): <BR>
+  - generate HTML/Javascript code to visualize the panel with buttons to activate the fence detection in the Google Map and save them in the `js/genPolygons.js` file: <BR>
    ![image](https://github.com/user-attachments/assets/141c16e9-72d8-42df-bcd8-af68488437f1)
 
     `sudo docker run --rm --name geoBuilder -v <googleMapsExportFilePath>:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEBUTTONSONLY <GEOFENCETAG1> ./geofiles/<GeoFenceExportFile1> <GEOFENCETAG2> ./geofiles/<GeoFenceExportFile2> ... > menu.html`
