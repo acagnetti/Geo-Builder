@@ -70,7 +70,7 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
        <solacePassword> <numberOfPeople> <peopleWalkingFileName> <numberOfPlanesTaxiing> <planesTaxiingFileName> <numberOfPlanesTakingOff>
        <planesTakingOffFileName> <numberOfVehicles> <VehiclesFileName>` 
 
-       ***[EXAMPLE to run the generator for 10 people walking, 10 planes taxiing to runway, 5 planes taking off, 10 vehicles driving ]***
+       *[EXAMPLE to run the generator for 10 people walking, 10 planes taxiing to runway, 5 planes taking off, 10 vehicles driving ]*
 
        *`sudo docker run --rm -v /home/demo/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles --name geoBuilder solace-geo-events-manager
        tcps://mr-connection-xxxyyyzzz.messaging.solace.cloud:55443 myvpn mr-connection-xxxyyyzzz.messaging.solace.cloud:1883 uuuuuuuuuuuuuu
