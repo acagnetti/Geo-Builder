@@ -120,8 +120,8 @@ my $startingHeading = 90;
 my $mqtt = "";
 my $fileHandleArray;  
 
-# if NOT geofencing only
-if (!($geolocationType eq 'GEOFENCEONLY')){ 
+# if NOT geofencing code generation mode
+if (!($geolocationType eq 'GEOFENCEONLY') and !($geolocationType eq 'GEOFENCEBUTTONSONLY') )  { 
 	# Connect to broker only if not doing geofencing only (no connection to broker needeD)
 	$mqtt = Net::MQTT::Simple->new($url);
 	print "connnecting to $url...\n";
@@ -601,4 +601,5 @@ elsif($geolocationType eq 'VEHICLE'){
 if (!($geolocationType eq 'GEOFENCEONLY')){ 
 	$mqtt->disconnect();
 	print "MQTT broker disconnected! \n";
+
 }
