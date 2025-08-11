@@ -80,6 +80,9 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
 
 - Download the web page client to visualize the events in a web browser and configure it to connect to your Solace Broker
   - **setup a web server** (example NGINX)
+    Example: use docker nginx image:
+    `sudo docker container run -it --rm -d -p 8090:80 -v /home/linman/www:/usr/share/nginx/html -v /home/linman/nginx/nginx.conf:/etc/nginx/nginx.conf:ro --name web nginx`
+
   - **copy the template** web page client to the web server home page directory (done with clone repo step above) and configure Geo-Builder directory as home for NGINX web page
   - **configure the Solace connection** parameters in the *`index.html`* page and *`js/auth.js`*
       	- edit file parameters with the right values: <BR> <BR>
