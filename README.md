@@ -34,6 +34,7 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
   - **log in** to the Editor
   ![image](https://github.com/user-attachments/assets/507ed8a3-e482-40bd-ae74-2d2ac987a4e2)  
   - **Draw** your vector path and polygonsin different 'levels' (eg. People, Vehicles, planes, polygons etc..)
+    *NOTE: do not put spaces in names of polygons! use - or _ characters instead. In general do not put spaces in any names. Path can have their default names, polygons have to be names explicitely as they are used for event detection*
   ![image](https://github.com/user-attachments/assets/cf72f3b1-1fbb-449a-a85c-6bf46025235c)
   - **Export** each vector path and polygons 'levels' to a separate csv file (eg. People, Vehicles, planes, shops, security zones etc..) in a directory (eg `/home/demo/adr1/googleGeoPath/pathfiles`)
   ![image](https://github.com/user-attachments/assets/be2358d3-5a92-4b53-9d21-a358ec1c0e48)
@@ -52,6 +53,8 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
   - **generate HTML/Javascript** code to visualize/activate level zones in the Google Map and save them in the `js/genPolygons.js` file: <BR>
     `sudo docker run --rm --name geoBuilder -v <googleMapsExportFilePath>:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEONLY <GEOFENCETAG1> ./geofiles/<GeoFenceExportFile1> <GEOFENCETAG2> ./geofiles/<GeoFenceExportFile2> ... > js/genPolygons.js` <BR>
 
+	*NOTE: do not put spaces in names of TAGS! use - or _ characters instead*
+
     *EXAMPLE* <BR>
 
      `sudo docker run --rm --name geoBuilder -v /mnt/d/Solace/Software/demo/Rome-Airport-ADR/adr1/googleGeoPath/pathfiles:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEONLY SECURITY ./geofiles/walkpath10.csv TAXIING ./geofiles/planetaxipath.csv RUNWAY ./geofiles/planetakeoffpath.csv SHOP ./geofiles/shops.csv > js/genPolygons.js`
@@ -60,6 +63,8 @@ In order to experience Geo Location Events you can use geoBuilder, A Solace Brok
    ![image](https://github.com/user-attachments/assets/141c16e9-72d8-42df-bcd8-af68488437f1)
 
     `sudo docker run --rm --name geoBuilder -v <googleMapsExportFilePath>:/usr/src/myapp/geofiles solace-geo-events-manager GEOFENCEBUTTONSONLY <GEOFENCETAG1> ./geofiles/<GeoFenceExportFile1> <GEOFENCETAG2> ./geofiles/<GeoFenceExportFile2> ... > menu.html`
+ 
+    *NOTE: do not put spaces in names of TAGS! use - or _ characters instead*
 
     *EXAMPLE* <BR>
 
